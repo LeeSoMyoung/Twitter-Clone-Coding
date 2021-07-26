@@ -11,6 +11,9 @@
 </div>
 
 # <div align="center"> 👀 Dev log </div>
-## 2021-07-26
+(1) 2021-07-26
+
+
 ![image](https://user-images.githubusercontent.com/47571973/127004406-5e53b3e4-278b-421e-ad8b-cae891583026.png)
+
 프로젝트에 필요한 Firebase 세팅과 기본 Router 코드 작성
