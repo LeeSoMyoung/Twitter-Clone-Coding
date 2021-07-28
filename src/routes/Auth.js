@@ -1,4 +1,4 @@
-import { authService } from 'firebaseInstance';
+import { authService, fbInstance } from 'firebaseInstance';
 import React, { useState } from 'react';
 
 const Auth = () => {
@@ -14,35 +14,61 @@ const Auth = () => {
         } = event;
 
         if (name === "email") {
-            setEmail(value)
+            setEmail(value);
         }
         else if (name === "password") {
             setPassword(value);
         }
     }
 
-    const onSubmit = (event) => {
+    const onSubmit = async (event) => {
         event.preventDefault(); // SPA이므로 refresh되어 정보들이 사라지는 것을 방지
 
         try {
 
+            let data;
+
             if (newAccount) {
                 // 새 계정 만들기
-                const data = authService.createUserWithEmailAndPassword(email, password);
+                data = await authService.createUserWithEmailAndPassword(email, password);
             }
             else {
                 // 로그인 폼 submit
-                const data = authService.signInWithEmailAndPassword(email, password);
+                data = await authService.signInWithEmailAndPassword(email, password);
             }
+            console.log(data);
 
-        } catch (error) {
-            console.log(error);
-            setError((prev)=>error.message);
+        }
+        catch (error) {
+            setError(error.message);
         }
     }
 
 
     const toggleAccount = () => setNewAccount((prev) => !prev);
+
+    const onSocialClick= async (event)=>{
+
+        const {
+            target:{
+                name
+            },
+        }=event;
+
+        let provider;
+        if(name==="google"){
+            // 구글로 로그인하기가 클릭 되었을 때
+            provider = new fbInstance.auth.GoogleAuthProvider();
+
+        }
+        else if(name==="github"){
+            // 깃허브로 로그인하기가 클릭되었을 때
+            provider = new fbInstance.auth.GithubAuthProvider();
+        }
+
+        const data = await authService.signInWithPopup(provider);
+
+    };
 
     return (
         <div>
@@ -58,14 +84,16 @@ const Auth = () => {
                     value={password}
                     onChange={onChange} />
                 <input type="submit" value={newAccount ? "회원가입" : "로그인"} />
-                <div>{error}</div>
+                {error}
             </form>
             <span onClick={toggleAccount}>
                 {newAccount ? "로그인" : "계정 생성하기"}
             </span>
             <div>
-                <button>Continue with Google</button>
-                <button>Continue with Github</button>
+                <button name="google"
+                onClick={onSocialClick}>Continue with Google</button>
+                <button name="github"
+                onClick={onSocialClick}>Continue with Github</button>
             </div>
         </div>
     );
