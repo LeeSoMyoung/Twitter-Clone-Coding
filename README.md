@@ -44,3 +44,23 @@ Firebase authentication console에서 제공업체가 깃허브로 표시된다.
 ![image](https://user-images.githubusercontent.com/47571973/127271653-37702ec6-4f2f-44e3-8492-c35ab969ac95.png)
 
 로그아웃 버튼 생성. 로그아웃 버튼을 클릭하면 로그인 화면으로 redirect되도록 하였다.
+
+![image](https://user-images.githubusercontent.com/47571973/127278051-a0da2298-08ba-4902-954e-c84f406493e8.png)
+
+firebase storage를 생성하여 트윗 내용들을 저장할 예정이다.
+
+![image](https://user-images.githubusercontent.com/47571973/127277748-48a58ca4-c70c-4733-94b8-eb8d2ca9c45e.png)
+
+트윗을 작성하는 폼과 버튼을 생성한다.
+
+![image](https://user-images.githubusercontent.com/47571973/127277814-f6bd96ee-e36e-493c-8a88-98f60aa138d6.png)
+
+트윗 내용을 작성하고 엔터를 누르면
+
+![image](https://user-images.githubusercontent.com/47571973/127277866-146ba060-1ca8-4215-8408-5e4598c9b4a9.png)
+
+다시 빈 화면이 됨과 동시에
+
+![image](https://user-images.githubusercontent.com/47571973/127277945-615431aa-4912-4235-b7e7-c10e5a2465bc.png)
+
+firebase storage에 업데이트 된다.
