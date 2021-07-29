@@ -64,3 +64,26 @@ firebase storage를 생성하여 트윗 내용들을 저장할 예정이다.
 ![image](https://user-images.githubusercontent.com/47571973/127277945-615431aa-4912-4235-b7e7-c10e5a2465bc.png)
 
 firebase storage에 업데이트 된다.
+
+(3) 2021-07-29
+![image](https://user-images.githubusercontent.com/47571973/127418043-77e3ed33-2883-4194-a402-45ec5a2eb417.png)
+
+트윗 삭제/ 수정버튼 추가 -> 삭제를 누르면 정말 삭제할 것이냐는 경고창이 뜬다.
+![image](https://user-images.githubusercontent.com/47571973/127418656-068175bb-63ea-49f7-8950-96d4299ab421.png)
+
+삭제하기를 누르면 보는 것처럼 화면에서도 삭제되고, 
+![image](https://user-images.githubusercontent.com/47571973/127418706-69ce7546-6ced-4aa2-b29d-3c81bed9e1d4.png)
+
+firestorage console에서도 삭제된다.
+![image](https://user-images.githubusercontent.com/47571973/127420008-2b6eb94f-1cc2-4da3-8475-7adb22e63ea7.png)
+
+또한, 수정하기를 누르면 다음과 같이 수정하는 새로운 form이 열린다.
+![image](https://user-images.githubusercontent.com/47571973/127422980-177b07ea-609f-4f22-b541-af9f2121cdfc.png)
+
+트윗 수정 후 수정하기를 누르면,
+![image](https://user-images.githubusercontent.com/47571973/127423094-48e33914-e545-44a0-9e96-864cc1a50d61.png)
+
+화면에서도 수정되고,
+![image](https://user-images.githubusercontent.com/47571973/127423141-beb3fdd1-c817-4cff-a0c2-0f54be2ad9cc.png)
+
+firestorage console에서도 수정된다.
