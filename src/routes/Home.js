@@ -1,46 +1,43 @@
+import Tweet from 'components/Tweet';
 import { dbService } from 'firebaseInstance';
 import React, { useEffect, useState } from 'react';
 
-const Home = () => {
+const Home = ({ userObj }) => {
 
     const TWEETS_KEY = "tweets";
 
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
 
-    const getTweets = async () =>{
-        const allTweets = await dbService.collection(TWEETS_KEY).get();
-        allTweets.forEach((document) =>{
-            const tweetObject = {
-                ...document.data(),
-                id: document.id,
-            };
+    useEffect(() => {
+        dbService.collection(TWEETS_KEY).onSnapshot((snapshot) => {
+            const tweetsArray = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            
+            setTweets(tweetsArray);
+    });
+}, []);
 
-            setTweets((prev)=>[document.data(), ...prev]);
-        });
-    };
+const onSubmit = async (event) => {
+    event.preventDefault();
+    await dbService.collection(TWEETS_KEY).add({
+        text: tweet,
+        createAt: Date.now(),
+        creatorId: userObj.uid,
+    });
+    setTweet("");
+}
 
-    useEffect(()=>{
-        getTweets();
-    },[]);
+const onChange = (event) => {
+    const {
+        target: { value }
+    } = event;
+    setTweet(value);
+}
 
-    const onSubmit = async (event) =>{
-        event.preventDefault();
-        await dbService.collection(TWEETS_KEY).add({
-            tweet,
-            createAt: Date.now(),
-        });
-        setTweet("");
-    }
-
-    const onChange = (event) =>{
-        const {
-            target:{value}
-        } = event;
-        setTweet(value);
-    }
-
-    return (
+return (
     <div>
         <form onSubmit={onSubmit}>
             <input
@@ -56,12 +53,11 @@ const Home = () => {
 
         </form>
         <div>
-            {tweets.map((tweet)=>
-            <div key = {tweet.id}>
-                <h4>{tweet.tweet}</h4>
-            </div>)}
+            {tweets.map((tweet) =>(
+                <Tweet key={tweet.id} tweetObj={tweet} isOwner={tweet.creatorId===userObj.uid} />
+            ))};
         </div>
     </div>
-    );
+);
 };
 export default Home;
