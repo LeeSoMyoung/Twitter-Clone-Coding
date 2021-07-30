@@ -1,4 +1,4 @@
-import { dbService } from 'firebaseInstance';
+import { dbService, storageService } from 'firebaseInstance';
 import React, { useState } from 'react'
 
 const Tweet = ({ tweetObj, isOwner }) => {
@@ -9,27 +9,32 @@ const Tweet = ({ tweetObj, isOwner }) => {
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 트윗을 삭제하시겠습니까?");
         if (ok) {
+            if (tweetObj.attachmentURL !== "") {
+                // 사진이 존재하면 Storage에서 먼저 삭제하고
+                await storageService.refFromURL(tweetObj.attachmentURL).delete();
+            }
             // 트윗을 삭제한다.
             await dbService.doc(`tweets/${tweetObj.id}`).delete();
+
         }
     }
 
     const toggleEditing = () => setEditing((prev) => !prev);
 
 
-    const onSubmit = async (event) =>{
+    const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.doc(`tweets/${tweetObj.id}`)
-        .update({
-            text:newText
-        });
+            .update({
+                text: newText
+            });
         setEditing(false);
     }
 
-    const onChange= (event) =>{
+    const onChange = (event) => {
         const {
-            target:{value}
-        }=event;
+            target: { value }
+        } = event;
 
         setNewText(value);
     }
@@ -43,13 +48,13 @@ const Tweet = ({ tweetObj, isOwner }) => {
                         <>
                             <form onSubmit={onSubmit}>
                                 <input
-                                type="text"
-                                placeholder="수정된 내용을 적으세요!" 
-                                value={newText}
-                                onChange={onChange}
-                                required />
+                                    type="text"
+                                    placeholder="수정된 내용을 적으세요!"
+                                    value={newText}
+                                    onChange={onChange}
+                                    required />
                                 <input type="submit"
-                                value="트윗 수정하기" />
+                                    value="트윗 수정하기" />
                             </form>
                             <button
                                 onClick={toggleEditing}>취소</button>
@@ -60,6 +65,13 @@ const Tweet = ({ tweetObj, isOwner }) => {
                     (
                         <div>
                             <h4>{tweetObj.text}</h4>
+                            {tweetObj.attachmentURL &&
+                                <>
+                                    <img src={tweetObj.attachmentURL}
+                                        width="150px"
+                                        height="150px" />
+                                </>
+                            }
                             {
                                 isOwner &&
                                 <>
