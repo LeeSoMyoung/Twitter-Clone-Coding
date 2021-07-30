@@ -87,3 +87,22 @@ firestorage console에서도 삭제된다.
 ![image](https://user-images.githubusercontent.com/47571973/127423141-beb3fdd1-c817-4cff-a0c2-0f54be2ad9cc.png)
 
 firestorage console에서도 수정된다.
+
+(4) 2021-07-30
+![image](https://user-images.githubusercontent.com/47571973/127616815-6740b6f6-9e60-4c17-8a16-505dd270f4e4.png)
+
+트윗할 때 사진 업로드할 수 있도록 하고, 업로드 시 미리보기 역시 구현했다. (현 화면은 트윗 작성 중 화면에 뜨는 미리보기이다.)
+![image](https://user-images.githubusercontent.com/47571973/127616899-63b61876-e2f0-4b88-b342-cc9b98956d49.png)
+
+트윗을 한 후 firestorage console로 들어가면 이렇게 attachmentUrl 컬럼이 추가된다. 이 컬럼의 링크를 열어 보면, 
+![image](https://user-images.githubusercontent.com/47571973/127616994-ed7c82b5-13d4-440d-88b1-46cffea6ffab.png)
+
+다음과 같이 내가 업로드한 파일이 뜬다. (즉, 업로드한 파일이 URL 형태로 저장됨을 알 수 있다.)
+
+![image](https://user-images.githubusercontent.com/47571973/127618096-32456d8f-8bee-4d5a-be6e-23b7603022bd.png)
+
+화면에 업로드 되면 다음과 같은 형태가 된다. (ㅋㅋㅋ 트윗은 이미지가 없는 트윗 -> 이미지가 있든 없든 에러가 안 생기게 만듦)
+
+![image](https://user-images.githubusercontent.com/47571973/127619924-02a6bc08-6f54-4c34-bab1-6462d4e8c855.png)
+
+또한, 트윗 삭제를 할 때, 사진이 존재하면, storage 내부의 사진부터 지우고 트윗을 지우는 것으로 했다.
