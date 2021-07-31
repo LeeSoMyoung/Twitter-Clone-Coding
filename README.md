@@ -106,3 +106,13 @@ firestorage console에서도 수정된다.
 ![image](https://user-images.githubusercontent.com/47571973/127619924-02a6bc08-6f54-4c34-bab1-6462d4e8c855.png)
 
 또한, 트윗 삭제를 할 때, 사진이 존재하면, storage 내부의 사진부터 지우고 트윗을 지우는 것으로 했다.
+
+(5) 2021-07-31
+![image](https://user-images.githubusercontent.com/47571973/127740985-e544320f-76ba-4e33-a1d1-49132acd5cef.png)
+내 프로필로 들어왔을 때, 유저 닉네임을 바꿀 수 있도록 했다.
+
+![image](https://user-images.githubusercontent.com/47571973/127741003-fc3ef0fb-fe6d-4a27-9644-161cf6ee3b16.png)
+바꿀 닉네임을 입력 후, 새로고침하면
+
+![image](https://user-images.githubusercontent.com/47571973/127741200-ddd4119d-7905-4ca0-8d57-967fa864e1fe.png)
+위와 같이 닉네임이 바뀐 것을 알 수 있다. 하지만, 매번 프로필 닉네임 변경 후 새로고침하는 것은 힘드므로 refreshUser 메소드를 만들어 즉시 업데이트 되게 하였다.
