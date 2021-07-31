@@ -9,7 +9,7 @@ const Home = ({ userObj }) => {
 
     const [tweet, setTweet] = useState("");
     const [tweets, setTweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
 
     useEffect(() => {
         dbService.collection(TWEETS_KEY).onSnapshot((snapshot) => {

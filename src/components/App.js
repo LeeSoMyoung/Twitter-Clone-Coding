@@ -15,7 +15,11 @@ function App() {
       if (user) {
         // 로그인 됐을 때 메인 화면을 띄우기 위해
         setIsLoggedIn(true);
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid:user.uid,
+          updateProfile: (args) =>user.updateProfile(args),
+        });
       }
       else {
         // 로그아웃 시 로그인 화면을 띄우기 위해
@@ -26,9 +30,23 @@ function App() {
     });
   }, []);
 
+  const refreshUser = () => {
+
+    const user = authService.currentUser;
+
+    setUserObj({
+      displayName: user.displayName,
+      uid:user.uid,
+      updateProfile: (args) =>user.updateProfile(args),
+    });
+  };
+
   return (
     <>
-    {init? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />:"Initializing..."}
+      {init ? <AppRouter
+        refreshUser={refreshUser}
+        isLoggedIn={isLoggedIn}
+        userObj={userObj} /> : "Initializing..."}
       <footer>&copy; Twitter Clone Coding {new Date().getFullYear()}</footer>
     </>
   );
