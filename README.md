@@ -1,5 +1,10 @@
 # <div align="center"> Twitter-Clone-Coding </div>
-<div align="center"> 트위터 클론 코딩</div>
+<div align="center"> 트위터 클론 코딩
+
+  **호스팅 페이지 : https://leesomyoung.github.io/Twitter-Clone-Coding/**
+  
+  **로그인 후 자동 새로고침 관련 버그 수정 中**
+</div>
 
 # <div align="center"> ✔ Tech Stack </div>
 
@@ -130,7 +135,7 @@ CSS 스타일을 적용하였다.
 ![image](https://user-images.githubusercontent.com/47571973/127761826-951ffab6-3826-43d5-a016-74b2381f585a.png)
 프로필 페이지
 
-*  발생 
+*  버그 발생 
 
 -> 로그인 시 TypeError: Cannot read property 'displayName' of null 발생
 
