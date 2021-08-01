@@ -1,5 +1,10 @@
 # <div align="center"> Twitter-Clone-Coding </div>
-<div align="center"> 트위터 클론 코딩</div>
+<div align="center"> 트위터 클론 코딩
+
+  **호스팅 페이지 : https://leesomyoung.github.io/Twitter-Clone-Coding/**
+  
+  **로그인 후 자동 새로고침 관련 버그 수정 中**
+</div>
 
 # <div align="center"> ✔ Tech Stack </div>
 
@@ -116,3 +121,24 @@ firestorage console에서도 수정된다.
 
 ![image](https://user-images.githubusercontent.com/47571973/127741200-ddd4119d-7905-4ca0-8d57-967fa864e1fe.png)
 위와 같이 닉네임이 바뀐 것을 알 수 있다. 하지만, 매번 프로필 닉네임 변경 후 새로고침하는 것은 힘드므로 refreshUser 메소드를 만들어 즉시 업데이트 되게 하였다.
+
+(6) 2021-08-01
+
+CSS 스타일을 적용하였다.
+
+![image](https://user-images.githubusercontent.com/47571973/127761781-1e3cf3b9-87d1-4f3e-b432-24a69884ae94.png)
+스타일 적용한 로그인 페이지
+
+![image](https://user-images.githubusercontent.com/47571973/127761817-c2dbecf9-0a00-4211-9afd-4d93c2a78170.png)
+메인 페이지
+
+![image](https://user-images.githubusercontent.com/47571973/127761826-951ffab6-3826-43d5-a016-74b2381f585a.png)
+프로필 페이지
+
+*  버그 발생 
+
+-> 로그인 시 TypeError: Cannot read property 'displayName' of null 발생
+
+-> 로그인 후 새로고침이 제대로 이루어지지 않고 있음을 뜻하므로 로그인 후 자동 새로고침 관련 버그 해결 중
+
+![image](https://user-images.githubusercontent.com/47571973/127761844-27681037-826e-4442-8675-3967826cc015.png)
