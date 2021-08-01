@@ -1,5 +1,7 @@
 import { dbService, storageService } from 'firebaseInstance';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Tweet = ({ tweetObj, isOwner }) => {
 
@@ -9,9 +11,9 @@ const Tweet = ({ tweetObj, isOwner }) => {
     const onDeleteClick = async () => {
         const ok = window.confirm("정말 이 트윗을 삭제하시겠습니까?");
         if (ok) {
-            if (tweetObj.attachmentURL !== "") {
+            if (tweetObj.attachmentUrl !== "") {
                 // 사진이 존재하면 Storage에서 먼저 삭제하고
-                await storageService.refFromURL(tweetObj.attachmentURL).delete();
+                await storageService.refFromURL(tweetObj.attachmentUrl).delete();
             }
             // 트윗을 삭제한다.
             await dbService.doc(`tweets/${tweetObj.id}`).delete();
@@ -40,24 +42,28 @@ const Tweet = ({ tweetObj, isOwner }) => {
     }
 
     return (
-        <div>
+        <div className="tweet">
             {
                 editing ?
                     // 수정하기 버튼을 누르면 form이 떠야한다.
                     (
                         <>
-                            <form onSubmit={onSubmit}>
+                            <form onSubmit={onSubmit} className="container tweetEdit">
                                 <input
                                     type="text"
                                     placeholder="수정된 내용을 적으세요!"
                                     value={newText}
                                     onChange={onChange}
+                                    autoFocus
+                                    className="formInput"
                                     required />
                                 <input type="submit"
+                                    className="formBtn"
                                     value="트윗 수정하기" />
                             </form>
                             <button
-                                onClick={toggleEditing}>취소</button>
+                                onClick={toggleEditing}
+                                className="formBtn cancelBtn">취소</button>
                         </>
                     )
                     :
@@ -65,21 +71,18 @@ const Tweet = ({ tweetObj, isOwner }) => {
                     (
                         <div>
                             <h4>{tweetObj.text}</h4>
-                            {tweetObj.attachmentURL &&
-                                <>
-                                    <img src={tweetObj.attachmentURL}
-                                        width="150px"
-                                        height="150px" />
-                                </>
-                            }
+                            {tweetObj.attachmentUrl && <img src={tweetObj.attachmentUrl} />}
                             {
-                                isOwner &&
-                                <>
-                                    <button
-                                        onClick={onDeleteClick}>삭제하기</button>
-                                    <button
-                                        onClick={toggleEditing}>수정하기</button>
-                                </>
+                                isOwner && (
+                                    <div class="tweet__actions">
+                                        <span onClick={onDeleteClick}>
+                                            <FontAwesomeIcon icon={faTrash} />
+                                        </span>
+                                        <span onClick={toggleEditing}>
+                                            <FontAwesomeIcon icon={faPencilAlt} />
+                                        </span>
+                                    </div>
+                                )
                             }
                         </div>
                     )

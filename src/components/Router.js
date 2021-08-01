@@ -12,7 +12,16 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             <Switch>
                 {isLoggedIn ?
                     // 로그인 되었을 때 : 홈 화면을 표시한다.
-                    <>
+                    <div
+                        style={{
+                            maxWidth: 890,
+                            width: "100%",
+                            margin: "0 auto",
+                            marginTop: 80,
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
                         <Route exact path="/">
                             <Home userObj={userObj} />
                         </Route>
@@ -21,7 +30,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                                 refreshUser={refreshUser}
                                 userObj={userObj} />
                         </Route>
-                    </>
+                    </div>
                     :
                     // 로그인이 안 되어 있을 때 : 로그인 화면을 표시한다.
                     <>
