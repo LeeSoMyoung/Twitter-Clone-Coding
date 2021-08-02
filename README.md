@@ -142,3 +142,17 @@ CSS 스타일을 적용하였다.
 -> 로그인 후 새로고침이 제대로 이루어지지 않고 있음을 뜻하므로 로그인 후 자동 새로고침 관련 버그 해결 중
 
 ![image](https://user-images.githubusercontent.com/47571973/127761844-27681037-826e-4442-8675-3967826cc015.png)
+
+(7) 2021-08-02
+
+![image](https://user-images.githubusercontent.com/47571973/127794843-99216d91-36b0-4237-b8a8-e32088d229c2.png)
+API 키를 사용할 수 있는 도메인을 제한시켜 놓는다. 이는, 누군가가 API key를 알게 되어 무분별한 접근을 시도하더라도 이를 차단해주는 효과가 있다.
+
+* 버그 2
+
+![image](https://user-images.githubusercontent.com/47571973/127795960-dee11917-f5cf-4c6d-8310-61e45d5af6f3.png)
+깃허브와 구글 자동 로그인이 안 되어 콘솔을 열어보았더니, Firebase에서 인증되지 않았다고 뜬다.
+
+![image](https://user-images.githubusercontent.com/47571973/127796540-21495e27-78e4-4614-92cb-5ac4cea1ee48.png)
+하지만, 보다시피 콘솔에는 잘 올라와 있다.
+
