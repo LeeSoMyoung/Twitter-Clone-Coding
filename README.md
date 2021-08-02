@@ -156,3 +156,7 @@ API 키를 사용할 수 있는 도메인을 제한시켜 놓는다. 이는, 누
 ![image](https://user-images.githubusercontent.com/47571973/127796540-21495e27-78e4-4614-92cb-5ac4cea1ee48.png)
 하지만, 보다시피 콘솔에는 잘 올라와 있다.
 
+✔ 버그2 해결
+![image](https://user-images.githubusercontent.com/47571973/127797044-10f6a4b9-3e6c-4bfc-af01-5c18fd881da0.png)
+Google Cloud Platform 콘솔에서 브라우저 키를 제한하는 과정에서 firebase 앱 키가 빠졌다.(깃허브 호스팅 웹 브라우저만 추가했고, 콜백 URL인 firebase 앱 identifier를 추가 안 해서이다.)
+
