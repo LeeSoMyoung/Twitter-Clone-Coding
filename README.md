@@ -3,7 +3,6 @@
 
   **호스팅 페이지 : https://leesomyoung.github.io/Twitter-Clone-Coding/**
   
-  **로그인 후 자동 새로고침 관련 버그 수정 中**
 </div>
 
 # <div align="center"> ✔ Tech Stack </div>
@@ -135,7 +134,8 @@ CSS 스타일을 적용하였다.
 ![image](https://user-images.githubusercontent.com/47571973/127761826-951ffab6-3826-43d5-a016-74b2381f585a.png)
 프로필 페이지
 
-*  버그 발생 
+
+*  버그 1 발생 
 
 -> 로그인 시 TypeError: Cannot read property 'displayName' of null 발생
 
@@ -156,7 +156,16 @@ API 키를 사용할 수 있는 도메인을 제한시켜 놓는다. 이는, 누
 ![image](https://user-images.githubusercontent.com/47571973/127796540-21495e27-78e4-4614-92cb-5ac4cea1ee48.png)
 하지만, 보다시피 콘솔에는 잘 올라와 있다.
 
+
+
 ✔ 버그2 해결
 ![image](https://user-images.githubusercontent.com/47571973/127797044-10f6a4b9-3e6c-4bfc-af01-5c18fd881da0.png)
 Google Cloud Platform 콘솔에서 브라우저 키를 제한하는 과정에서 firebase 앱 키가 빠졌다.(깃허브 호스팅 웹 브라우저만 추가했고, 콜백 URL인 firebase 앱 identifier를 추가 안 해서이다.)
 
+(8) 2021-08-03
+
+✔ 버그 1 해결
+
+![image](https://user-images.githubusercontent.com/47571973/128025424-6f7885d2-9bf8-4be3-8094-5cb1691dd570.png)
+
+버그 1은 userObj.displayName을 찾지 못해 생긴 버그이다. 처음에는 자동 새로고침 메소드를 만들어 추가했지만, 이 방법이 먹히지 않아, userObj가 null인지 아닌지 여부로 설정하였더니 정상적으로 작동 되었다.
