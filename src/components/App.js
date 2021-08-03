@@ -12,13 +12,15 @@ function App() {
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
+      
       if (user) {
         // 로그인 됐을 때 메인 화면을 띄우기 위해
+        console.log(user);
         setIsLoggedIn(true);
         setUserObj({
           displayName: user.displayName,
-          uid:user.uid,
-          updateProfile: (args) =>user.updateProfile(args),
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args),
         });
       }
       else {
@@ -36,17 +38,18 @@ function App() {
 
     setUserObj({
       displayName: user.displayName,
-      uid:user.uid,
-      updateProfile: (args) =>user.updateProfile(args),
+      uid: user.uid,
+      updateProfile: (args) => user.updateProfile(args),
     });
   };
 
   return (
     <>
+    <title>Twitter Clone Coding</title>
       {init ? <AppRouter
         refreshUser={refreshUser}
         isLoggedIn={isLoggedIn}
-        userObj={userObj} /> : "Initializing..."}
+        userObj={userObj} /> : <div align="center">"Initializing..."</div>}
       <footer>&copy; Twitter Clone Coding {new Date().getFullYear()}</footer>
     </>
   );

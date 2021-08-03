@@ -19,6 +19,7 @@ const Auth = () => {
         } = event;
 
         let provider;
+
         if (name === "google") {
             // 구글로 로그인하기가 클릭 되었을 때
             provider = new fbInstance.auth.GoogleAuthProvider();
@@ -29,7 +30,7 @@ const Auth = () => {
             provider = new fbInstance.auth.GithubAuthProvider();
         }
 
-        const data = await authService.signInWithPopup(provider);
+        await authService.signInWithPopup(provider);
 
     };
 
